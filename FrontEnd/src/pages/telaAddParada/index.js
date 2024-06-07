@@ -1,65 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import BotaoBranco from '../../components/botaoBranco';
 import IconVoltar from '../../components/icon-voltar';
 import Input from '../../components/input';
 import InputDescricao from '../../components/inputDescricao';
-import { View, Text, StyleSheet, ImageBackground, Image, ScrollView } from 'react-native';
+import TimeInputCustom from '../../components/timeInput';
+import { View, ScrollView, StyleSheet } from 'react-native';
 
 const App = () => {
+    const [time, setTime] = useState('');
+
     return (
         <View style={styles.container}>
-            <Header titulo={'Minhas Viagens'}/>
+            <Header titulo={'Minhas Viagens'} />
             <ScrollView style={styles.conteudoScroll}>
                 <View style={styles.conteudo}>
                     <View style={styles.iconVoltar}>
-                        <IconVoltar/>
+                        <IconVoltar />
                     </View>
-                    <BotaoBranco texto={'Adicionar Parada'} onPress={undefined} estilo={undefined} icon={undefined}  />
+                    <BotaoBranco texto={'Adicionar Parada'} onPress={undefined} estilo={undefined} icon={undefined} />
                     <Input
                         placeholder={'Digite o nome do evento'}
                         onChangeText={undefined}
-                        value={undefined} 
+                        value={undefined}
                         texto={'Nome da parada:'}
-                        icon={require('../../../assets/images/global/icon-lapis.png')} 
-                        fontColor={undefined} 
-                        inputColor={'white'} 
+                        icon={require('../../../assets/images/global/icon-lapis.png')}
+                        fontColor={undefined}
+                        inputColor={'white'}
                         width={320}
-                        height={undefined}                                            
-                        />
+                        height={undefined}
+                    />
 
                     <Input
                         placeholder={'Digite um evento que deseja visitar'}
                         onChangeText={undefined}
-                        value={undefined} 
+                        value={undefined}
                         texto={'Pesquisar por evento:'}
-                        icon={require('../../../assets/images/global/icon-maps.png')} 
-                        fontColor={undefined} 
-                        inputColor={'white'} 
+                        icon={require('../../../assets/images/global/icon-maps.png')}
+                        fontColor={undefined}
+                        inputColor={'white'}
                         width={320}
-                        height={undefined}                                           
-                        />
+                        height={undefined}
+                    />
 
-                    <InputDescricao 
-                    value={undefined} 
-                    onChangeText={undefined} 
-                    placeholder={'Digite uma descrição do evento'} />
-                    
-                    <Input
-                        placeholder={'00:00'}
+                    <InputDescricao
+                        value={undefined}
                         onChangeText={undefined}
-                        value={undefined} 
-                        texto={'Hora:'}
-                        icon={require('../../../assets/images/global/icon-relogio.png')} 
-                        fontColor={undefined} 
-                        inputColor={'white'} 
-                        width={320}
-                        height={undefined}                                           
-                        />
+                        placeholder={'Digite uma descrição do evento'}
+                    />
 
-                    <BotaoBranco texto={'Salvar Parada'} onPress={undefined} estilo={undefined} icon={undefined}  />
+                    <TimeInputCustom
+                        texto={'Hora da parada:'}
+                        value={time}
+                        onChange={setTime}
+                        placeholder={'00:00'}
+                    />
 
+                    <BotaoBranco texto={'Salvar Parada'} onPress={undefined} estilo={undefined} icon={undefined} />
                 </View>
             </ScrollView>
             <Footer />

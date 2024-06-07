@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const TimeInputCustom = ({ texto, value, onChange, placeholder, inputStyle }) => {
+const TimeInputCustom = ({ texto, value, onChange, placeholder = "00:00", inputStyle }) => {
     const [show, setShow] = useState(false);
 
     const onChangeTime = (event, selectedTime) => {
@@ -29,7 +29,7 @@ const TimeInputCustom = ({ texto, value, onChange, placeholder, inputStyle }) =>
             />
             {show && (
                 <DateTimePicker
-                    value={value ? new Date(value) : new Date()}
+                    value={value ? new Date(`1970-01-01T${value}:00`) : new Date()}
                     mode="time"
                     display="default"
                     onChange={onChangeTime}
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         fontSize: 12,
         height: 40,
-        width: 280,
+        width: 320,
     },
 });
 
